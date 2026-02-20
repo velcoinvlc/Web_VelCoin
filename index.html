@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VelCoin (VLC) - Decentralized Digital Asset</title>
+    <title>VelCoin (VLC) - Native Blockchain | Fixed Supply 1B</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,20 +14,70 @@
 
         :root {
             --primary: #8B5CF6;
-            --primary-dark: #7C3AED;
+            --primary-dark: #6D28D9;
             --primary-light: #A78BFA;
-            --secondary: #1F1F2E;
-            --dark: #0F0F1A;
-            --light: #F3F0FF;
+            --secondary: #1E1B2E;
+            --dark: #0F0D1A;
+            --darker: #080614;
+            --light: #F5F3FF;
             --accent: #C4B5FD;
+            --success: #10B981;
+            --gradient-1: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+            --gradient-2: linear-gradient(90deg, #8B5CF6, #EC4899, #8B5CF6);
+            --glass: rgba(139, 92, 246, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: #E5E7EB;
             line-height: 1.6;
-            color: #333;
-            background: var(--dark);
-            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.15;
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-animation::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--primary-dark) 0%, transparent 70%);
+            opacity: 0.1;
+            bottom: -300px;
+            left: -300px;
+            animation: float 12s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
         /* Navigation */
@@ -34,17 +85,23 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 15, 26, 0.95);
+            background: rgba(8, 6, 20, 0.9);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 10px 0;
+            background: rgba(8, 6, 20, 0.98);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -55,8 +112,10 @@
             align-items: center;
             gap: 12px;
             color: white;
-            font-size: 1.5em;
-            font-weight: bold;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            text-decoration: none;
         }
 
         .logo img {
@@ -64,11 +123,12 @@
             height: 45px;
             border-radius: 50%;
             object-fit: cover;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             list-style: none;
         }
 
@@ -76,11 +136,35 @@
             color: var(--accent);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95em;
+            position: relative;
             transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
             color: var(--primary-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
         }
 
         /* Hero Section */
@@ -89,81 +173,127 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 50%, var(--dark) 100%);
             position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            opacity: 0.15;
-            top: -200px;
-            right: -200px;
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-            opacity: 0.1;
-            bottom: -100px;
-            left: -100px;
-            animation: pulse 6s ease-in-out infinite reverse;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            padding: 120px 30px 80px;
         }
 
         .hero-content {
             text-align: center;
+            max-width: 1000px;
             z-index: 1;
-            padding: 40px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--glass);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            color: var(--primary-light);
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-badge::before {
+            content: '●';
+            color: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .hero-logo {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin-bottom: 30px;
-            box-shadow: 0 0 60px rgba(139, 92, 246, 0.4);
-            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.5), 0 0 120px rgba(139, 92, 246, 0.2);
+            animation: floatLogo 4s ease-in-out infinite, fadeInUp 1s ease;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 4.5em;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5em;
+            font-weight: 800;
             color: white;
             margin-bottom: 10px;
-            text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            background: var(--gradient-2);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite, fadeInUp 1s ease 0.2s both;
         }
 
-        .hero .ticker {
-            font-size: 2em;
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .hero-ticker {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5em;
+            font-weight: 600;
             color: var(--primary-light);
-            font-weight: 300;
-            letter-spacing: 5px;
+            letter-spacing: 10px;
             margin-bottom: 20px;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
-        .hero-tagline {
-            color: var(--accent);
+        .hero-description {
             font-size: 1.3em;
-            max-width: 600px;
+            color: var(--accent);
+            max-width: 700px;
             margin: 0 auto 40px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: white;
+            display: block;
+        }
+
+        .hero-stat-label {
+            color: var(--accent);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero-buttons {
@@ -171,131 +301,290 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            animation: fadeInUp 1s ease 1s both;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 18px 45px;
             border-radius: 50px;
             font-size: 1.1em;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--gradient-1);
             color: white;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.6);
         }
 
         .btn-secondary {
             background: transparent;
             color: white;
             border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .btn-secondary:hover::before {
+            left: 0;
         }
 
         .btn-secondary:hover {
-            background: var(--primary);
+            border-color: transparent;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 30px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--glass);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85em;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
             color: white;
+            margin-bottom: 15px;
         }
 
-        /* Stats Section */
-        .stats {
-            background: var(--secondary);
-            padding: 60px 20px;
-        }
-
-        .stats-grid {
-            max-width: 1000px;
+        .section-header p {
+            color: var(--accent);
+            font-size: 1.1em;
+            max-width: 600px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
         }
 
-        .stat-card {
+        /* Supply Highlight */
+        .supply-section {
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .supply-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-1);
+        }
+
+        .supply-display {
+            text-align: center;
+            padding: 60px;
+            background: var(--glass);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .supply-label {
+            color: var(--accent);
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .supply-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5em;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .supply-ticker {
+            font-size: 2em;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        .supply-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .supply-feature {
             text-align: center;
             padding: 30px;
-            background: rgba(139, 92, 246, 0.1);
+            background: rgba(139, 92, 246, 0.05);
             border-radius: 20px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: all 0.3s;
         }
 
-        .stat-value {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: var(--primary-light);
-            display: block;
+        .supply-feature:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.1);
         }
 
-        .stat-label {
+        .supply-feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5em;
+        }
+
+        .supply-feature h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .supply-feature p {
             color: var(--accent);
             font-size: 0.95em;
-            margin-top: 5px;
         }
 
         /* Whitepaper Section */
         .whitepaper {
             background: white;
-            padding: 80px 20px;
+            color: #1F2937;
         }
 
-        .container {
-            max-width: 900px;
+        .whitepaper .section-header h2 {
+            color: var(--primary-dark);
+        }
+
+        .whitepaper .section-header p {
+            color: #6B7280;
+        }
+
+        .wp-container {
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .section-header {
-            text-align: center;
+        .wp-nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-bottom: 50px;
+            padding: 20px;
+            background: #F9FAFB;
+            border-radius: 15px;
         }
 
-        .section-header h2 {
-            font-size: 2.5em;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
+        .wp-nav-btn {
+            padding: 12px 25px;
+            border: none;
+            background: white;
+            color: #6B7280;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
         }
 
-        .section-header p {
-            color: #666;
-            font-size: 1.1em;
+        .wp-nav-btn:hover, .wp-nav-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .wp-content {
+            display: none;
+        }
+
+        .wp-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .wp-section {
             margin-bottom: 40px;
-            padding: 30px;
-            background: #f8f7ff;
-            border-radius: 15px;
-            border-left: 5px solid var(--primary);
+            padding: 40px;
+            background: #F9FAFB;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
         }
 
         .wp-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5em;
             color: var(--primary-dark);
-            font-size: 1.4em;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .wp-section h3::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
+        .wp-section h3 span {
+            width: 35px;
+            height: 35px;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
         }
 
         .wp-section p, .wp-section li {
-            color: #444;
-            line-height: 1.8;
+            color: #4B5563;
+            line-height: 1.9;
+            margin-bottom: 15px;
         }
 
         .wp-section ul {
@@ -303,59 +592,133 @@
         }
 
         .wp-section li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        /* Tokenomics Cards */
-        .tokenomics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+        .wp-section strong {
+            color: var(--primary-dark);
         }
 
-        .token-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
+        .code-block {
+            background: #1F2937;
+            color: #E5E7EB;
             padding: 25px;
             border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
-        }
-
-        .token-card h4 {
+            font-family: 'Fira Code', monospace;
             font-size: 0.9em;
-            opacity: 0.9;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            overflow-x: auto;
+            margin: 20px 0;
         }
 
-        .token-card .value {
-            font-size: 1.6em;
-            font-weight: bold;
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.95em;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #F9FAFB;
+        }
+
+        /* Features Grid */
+        .features {
+            background: var(--secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 30px 60px rgba(139, 92, 246, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--accent);
+            line-height: 1.8;
         }
 
         /* Roadmap */
         .roadmap {
-            background: var(--secondary);
-            padding: 80px 20px;
+            background: var(--darker);
         }
 
-        .roadmap-timeline {
-            max-width: 800px;
+        .roadmap-container {
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
         }
 
-        .roadmap-timeline::before {
-            content: '';
+        .roadmap-line {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             width: 2px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            background: var(--gradient-1);
         }
 
         .roadmap-item {
@@ -363,7 +726,7 @@
             justify-content: flex-end;
             padding-right: 50%;
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .roadmap-item:nth-child(even) {
@@ -373,181 +736,216 @@
         }
 
         .roadmap-content {
-            background: rgba(139, 92, 246, 0.15);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            max-width: 350px;
+            background: var(--glass);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            padding: 35px;
+            border-radius: 25px;
+            max-width: 420px;
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .roadmap-item:nth-child(odd) .roadmap-content {
-            margin-right: 30px;
+            margin-right: 40px;
         }
 
         .roadmap-item:nth-child(even) .roadmap-content {
-            margin-left: 30px;
+            margin-left: 40px;
         }
 
-        .roadmap-number {
+        .roadmap-dot {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3em;
+            font-weight: 700;
             color: white;
-            font-size: 1.2em;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            z-index: 1;
+        }
+
+        .roadmap-phase {
+            color: var(--primary-light);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         .roadmap-content h3 {
-            color: var(--primary-light);
-            margin-bottom: 10px;
+            color: white;
+            font-size: 1.4em;
+            margin-bottom: 15px;
         }
 
         .roadmap-content p {
             color: var(--accent);
-            font-size: 0.95em;
-        }
-
-        /* Tech Specs */
-        .tech {
-            background: white;
-            padding: 80px 20px;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .tech-card {
-            background: #f8f7ff;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #e9e5ff;
-        }
-
-        .tech-card h4 {
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .tech-card p, .tech-card li {
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        .tech-card ul {
-            margin-left: 20px;
+            line-height: 1.8;
         }
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
-            padding: 80px 20px;
+            background: var(--gradient-1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
         .contact h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5em;
             color: white;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .contact > p {
-            color: var(--accent);
-            margin-bottom: 40px;
+        .contact > .contact-content > p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 50px;
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .contact-card {
-            background: rgba(255,255,255,0.08);
-            padding: 35px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            transition: transform 0.3s;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s;
         }
 
         .contact-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.12);
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
         }
 
-        .contact-card .icon {
-            width: 60px;
-            height: 60px;
-            background: var(--primary);
-            border-radius: 15px;
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.8em;
+            margin: 0 auto 25px;
+            font-size: 2.5em;
         }
 
         .contact-card h3 {
             color: white;
-            margin-bottom: 10px;
+            font-size: 1.3em;
+            margin-bottom: 15px;
         }
 
-        .contact-card p, .contact-card a {
-            color: var(--accent);
-            text-decoration: none;
+        .contact-card p {
+            color: rgba(255,255,255,0.8);
         }
 
         .contact-card a {
-            font-weight: 600;
-            font-size: 1.1em;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            transition: all 0.3s;
         }
 
         .contact-card a:hover {
-            color: var(--primary-light);
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .website-display {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.9);
+            background: rgba(0,0,0,0.2);
+            padding: 15px 25px;
+            border-radius: 15px;
+            display: inline-block;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
-            padding: 40px 20px;
+            background: var(--darker);
+            padding: 50px 30px;
             text-align: center;
-            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 25px;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        footer h3 {
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 10px;
         }
 
         footer p {
             color: var(--accent);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         footer .copyright {
-            color: #666;
-            font-size: 0.9em;
+            color: #6B7280;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -558,31 +956,39 @@
             }
 
             .hero h1 {
-                font-size: 2.8em;
+                font-size: 3em;
             }
 
-            .hero .ticker {
-                font-size: 1.3em;
+            .hero-ticker {
+                font-size: 1.8em;
             }
 
-            .hero-logo {
-                width: 140px;
-                height: 140px;
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
             }
 
-            .roadmap-timeline::before {
-                left: 20px;
+            .supply-value {
+                font-size: 2.5em;
+            }
+
+            .section-header h2 {
+                font-size: 2em;
+            }
+
+            .roadmap-line {
+                left: 30px;
             }
 
             .roadmap-item,
             .roadmap-item:nth-child(even) {
                 justify-content: flex-start;
-                padding-left: 60px;
+                padding-left: 80px;
                 padding-right: 0;
             }
 
-            .roadmap-number {
-                left: 20px;
+            .roadmap-dot {
+                left: 30px;
                 transform: none;
             }
 
@@ -592,22 +998,30 @@
                 margin-right: 0;
                 max-width: 100%;
             }
+
+            .contact h2 {
+                font-size: 2.2em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="velcoin-logo.png" alt="VelCoin Logo">
+            <a href="#" class="logo">
+                <img src="velcoin-logo.png" alt="VelCoin">
                 <span>VelCoin</span>
-            </div>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#supply">Supply</a></li>
                 <li><a href="#whitepaper">Whitepaper</a></li>
+                <li><a href="#features">Features</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#tech">Technology</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">☰</div>
@@ -617,175 +1031,459 @@
     <!-- Hero Section -->
     <section class="hero" id="about">
         <div class="hero-content">
+            <div class="hero-badge">Native Blockchain Mainnet</div>
             <img src="velcoin-logo.png" alt="VelCoin Logo" class="hero-logo">
             <h1>VelCoin</h1>
-            <div class="ticker">VLC</div>
-            <p class="hero-tagline">Decentralized digital asset with fixed supply. Secure, transparent, and ready for global adoption.</p>
+            <div class="hero-ticker">VLC</div>
+            <p class="hero-description">
+                A controlled, fixed-supply native blockchain asset designed for scalability and transparency. 
+                No inflation. No hidden minting. Complete monetary predictability.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value">1,000,000,000</span>
+                    <span class="hero-stat-label">Fixed Supply</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">SHA-256</span>
+                    <span class="hero-stat-label">Proof of Work</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">100%</span>
+                    <span class="hero-stat-label">Transparent</span>
+                </div>
+            </div>
             <div class="hero-buttons">
                 <a href="#whitepaper" class="btn btn-primary">Read Whitepaper</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <a href="#contact" class="btn btn-secondary">Connect With Us</a>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <span class="stat-value">1,000,000,000</span>
-                <div class="stat-label">Total Supply VLC</div>
+    <!-- Supply Section -->
+    <section class="supply-section" id="supply">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Monetary Policy</span>
+                <h2>Immutable Supply</h2>
+                <p>Mathematically guaranteed. Protocol-enforced. Forever.</p>
             </div>
-            <div class="stat-card">
-                <span class="stat-value">Fixed</span>
-                <div class="stat-label">Emission Model</div>
+            <div class="supply-display">
+                <div class="supply-label">Total Maximum Supply</div>
+                <div class="supply-value">1,000,000,000</div>
+                <div class="supply-ticker">VLC</div>
             </div>
-            <div class="stat-card">
-                <span class="stat-value">PoW</span>
-                <div class="stat-label">Consensus</div>
-            </div>
-            <div class="stat-card">
-                <span class="stat-value">SHA256</span>
-                <div class="stat-label">Cryptography</div>
+            <div class="supply-features">
+                <div class="supply-feature">
+                    <div class="supply-feature-icon">🔒</div>
+                    <h3>Fixed Forever</h3>
+                    <p>No inflationary minting after genesis. The supply is immutable and cannot exceed 1 billion VLC.</p>
+                </div>
+                <div class="supply-feature">
+                    <div class="supply-feature-icon">📊</div>
+                    <h3>Transparent Distribution</h3>
+                    <p>All balances tracked in state.json. Total supply calculated dynamically for mathematical consistency.</p>
+                </div>
+                <div class="supply-feature">
+                    <div class="supply-feature-icon">🎯</div>
+                    <h3>Controlled Allocation</h3>
+                    <p>Pre-allocated to Founder Wallet with distribution via on-chain transactions. No hidden mechanisms.</p>
+                </div>
+                <div class="supply-feature">
+                    <div class="supply-feature-icon">⚡</div>
+                    <h3>Predictable Structure</h3>
+                    <p>No halving. No block rewards. No surprises. Pure monetary predictability from day one.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Whitepaper Section -->
     <section class="whitepaper" id="whitepaper">
-        <div class="container">
+        <div class="wp-container">
             <div class="section-header">
+                <span class="section-tag">Documentation</span>
                 <h2>Whitepaper</h2>
-                <p>Complete documentation of the VelCoin network</p>
+                <p>Complete technical and economic specification</p>
             </div>
 
-            <div class="wp-section">
-                <h3>Executive Summary</h3>
-                <p>VelCoin (VLC) is a decentralized digital asset designed with a fixed supply and a fully emitted token model. The network is ready for adoption and emphasizes security, transparency, and scalability.</p>
+            <div class="wp-nav">
+                <button class="wp-nav-btn active" onclick="showSection('overview')">Overview</button>
+                <button class="wp-nav-btn" onclick="showSection('monetary')">Monetary Policy</button>
+                <button class="wp-nav-btn" onclick="showSection('architecture')">Architecture</button>
+                <button class="wp-nav-btn" onclick="showSection('consensus')">Consensus</button>
+                <button class="wp-nav-btn" onclick="showSection('transactions')">Transactions</button>
+                <button class="wp-nav-btn" onclick="showSection('comparison')">Comparison</button>
+                <button class="wp-nav-btn" onclick="showSection('roadmap-wp')">Roadmap</button>
             </div>
 
-            <div class="wp-section">
-                <h3>Vision and Mission</h3>
-                <p>VelCoin aims to provide a reliable, decentralized cryptocurrency that can be adopted globally for secure, fast, and cost-effective transactions. The network intends to serve as a foundation for decentralized applications and value transfer.</p>
-            </div>
-
-            <div class="wp-section">
-                <h3>Tokenomics</h3>
-                <div class="tokenomics-grid">
-                    <div class="token-card">
-                        <h4>Token Name</h4>
-                        <div class="value">VelCoin</div>
-                    </div>
-                    <div class="token-card">
-                        <h4>Ticker</h4>
-                        <div class="value">VLC</div>
-                    </div>
-                    <div class="token-card">
-                        <h4>Total Supply</h4>
-                        <div class="value">1,000,000,000</div>
-                    </div>
-                    <div class="token-card">
-                        <h4>Emission</h4>
-                        <div class="value">No Future Mint</div>
-                    </div>
+            <!-- Overview -->
+            <div id="overview" class="wp-content active">
+                <div class="wp-section">
+                    <h3><span>1</span>Executive Summary</h3>
+                    <p>VelCoin (VLC) is a <strong>native blockchain-based digital currency</strong> designed to provide a lightweight, scalable, and controlled-value ecosystem. Unlike tokens deployed on third-party blockchains, VelCoin operates on its own mainnet infrastructure with a custom node implementation.</p>
+                    <p>VelCoin has a <strong>fixed total supply of 1,000,000,000 VLC</strong>. The total supply is immutable and fully defined at the protocol level.</p>
+                    <p><strong>Key Focus Areas:</strong></p>
+                    <ul>
+                        <li>Simplicity of infrastructure</li>
+                        <li>Controlled and transparent distribution</li>
+                        <li>Lightweight mining validation</li>
+                        <li>Secure transaction model with nonce-based protection</li>
+                        <li>Modular node architecture</li>
+                    </ul>
                 </div>
-                <p><strong>Allocation:</strong> Founder and Team hold 100% initial allocation with managed distribution for liquidity, adoption, and early participant incentivization.</p>
             </div>
 
-            <div class="wp-section">
-                <h3>Governance</h3>
-                <ul>
-                    <li><strong>Structure:</strong> Founder-led with advisory input</li>
-                    <li><strong>Decision Making:</strong> Major protocol decisions determined by founder with stakeholder transparency</li>
-                    <li><strong>Community:</strong> Open channels for discussion and proposals</li>
-                </ul>
+            <!-- Monetary Policy -->
+            <div id="monetary" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>2.1</span>Total Supply</h3>
+                    <ul>
+                        <li><strong>Maximum Supply:</strong> 1,000,000,000 VLC</li>
+                        <li><strong>Circulating Supply:</strong> Determined by balances stored in state.json</li>
+                        <li><strong>Supply Mechanism:</strong> Fixed supply, pre-allocated to the Founder Wallet</li>
+                    </ul>
+                    <p>VelCoin <strong>does not implement inflationary minting after genesis</strong>. The supply is fixed and cannot exceed 1 billion VLC.</p>
+                </div>
+                <div class="wp-section">
+                    <h3><span>2.2</span>Distribution Model</h3>
+                    <p>At network initialization:</p>
+                    <ul>
+                        <li>The total supply is assigned to a Founder Wallet</li>
+                        <li>Distribution occurs via on-chain transactions</li>
+                        <li>No automatic block rewards are generated</li>
+                    </ul>
+                    <p><strong>This model ensures:</strong></p>
+                    <ul>
+                        <li>Predictable monetary structure</li>
+                        <li>No hidden minting mechanisms</li>
+                        <li>Full transparency through state tracking</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="wp-section">
-                <h3>Legal Framework</h3>
-                <ul>
-                    <li>Compliance with applicable regulations in relevant jurisdictions</li>
-                    <li>Utility token with fixed supply; not a security</li>
-                    <li>Founder maintains legal compliance and operational transparency</li>
-                </ul>
+            <!-- Architecture -->
+            <div id="architecture" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>3.1</span>Network Type</h3>
+                    <ul>
+                        <li><strong>Network:</strong> velcoin-mainnet</li>
+                        <li>Custom blockchain implementation</li>
+                        <li>JSON-based state persistence</li>
+                    </ul>
+                </div>
+                <div class="wp-section">
+                    <h3><span>3.2</span>Block Structure</h3>
+                    <div class="code-block">
+{
+  index,
+  timestamp,
+  transactions,
+  previous_hash,
+  nonce,
+  block_hash
+}</div>
+                </div>
+                <div class="wp-section">
+                    <h3><span>3.3</span>Genesis Block</h3>
+                    <ul>
+                        <li>The network creates a genesis block if no chain exists</li>
+                        <li><strong>Previous hash:</strong> 64 zeros</li>
+                        <li><strong>Transactions:</strong> Empty</li>
+                        <li><strong>Hash:</strong> Computed via SHA-256</li>
+                    </ul>
+                </div>
+                <div class="wp-section">
+                    <h3><span>7</span>State Management</h3>
+                    <p>VelCoin uses JSON-based persistence:</p>
+                    <ul>
+                        <li><strong>state.json</strong> → balances</li>
+                        <li><strong>blockchain.json</strong> → chain</li>
+                        <li><strong>mempool.json</strong> → pending transactions</li>
+                        <li><strong>nonces.json</strong> → nonce tracking</li>
+                    </ul>
+                    <p>Total supply is calculated dynamically:</p>
+                    <div class="code-block">sum(all balances)</div>
+                    <p>This ensures <strong>mathematical consistency</strong> across the ledger.</p>
+                </div>
+            </div>
+
+            <!-- Consensus -->
+            <div id="consensus" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>4</span>Consensus Mechanism</h3>
+                    <p>VelCoin uses a <strong>lightweight Proof-of-Work inspired hashing validation</strong>.</p>
+                    <p><strong>Parameters:</strong></p>
+                    <ul>
+                        <li><strong>Hashing algorithm:</strong> SHA-256</li>
+                        <li><strong>Difficulty:</strong> 4 leading zeros</li>
+                    </ul>
+                    <p><strong>Block mining process:</strong></p>
+                    <ol>
+                        <li>Nonce incremented until hash satisfies difficulty</li>
+                        <li>Valid hash appended to chain</li>
+                        <li>Transactions included from mempool</li>
+                    </ol>
+                    <p><strong>This provides:</strong></p>
+                    <ul>
+                        <li>Basic computational validation</li>
+                        <li>Chain integrity</li>
+                        <li>Block immutability via hash chaining</li>
+                    </ul>
+                    <p><em>It is not designed to compete with Bitcoin's global PoW but instead to provide a secure and efficient network model.</em></p>
+                </div>
+            </div>
+
+            <!-- Transactions -->
+            <div id="transactions" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>5.1</span>Transaction Fields</h3>
+                    <p>Each transaction includes:</p>
+                    <ul>
+                        <li><strong>from</strong> - sender address</li>
+                        <li><strong>to</strong> - recipient address</li>
+                        <li><strong>amount</strong> - VLC amount</li>
+                        <li><strong>nonce</strong> - transaction sequence</li>
+                        <li><strong>public_key</strong> - sender's public key</li>
+                        <li><strong>signature</strong> - cryptographic signature</li>
+                    </ul>
+                </div>
+                <div class="wp-section">
+                    <h3><span>5.2</span>Signature Verification</h3>
+                    <p><strong>Signature logic:</strong></p>
+                    <div class="code-block">expected = sha256(sha256(public_key) + payload)</div>
+                    <p><strong>Transactions are valid only if:</strong></p>
+                    <ul>
+                        <li>Address matches derived public key</li>
+                        <li>Signature matches expected hash</li>
+                        <li>Nonce is strictly increasing</li>
+                        <li>Sender balance is sufficient</li>
+                    </ul>
+                    <p><strong>This protects against:</strong></p>
+                    <ul>
+                        <li>Replay attacks</li>
+                        <li>Double spending</li>
+                        <li>Signature forgery</li>
+                    </ul>
+                </div>
+                <div class="wp-section">
+                    <h3><span>6</span>Wallet System</h3>
+                    <p>Wallets are generated with:</p>
+                    <ul>
+                        <li>64-character hexadecimal private key</li>
+                        <li>Public key derived via SHA-256</li>
+                        <li>Address derived from public key hash (first 40 chars)</li>
+                    </ul>
+                    <p>Wallet generation is <strong>fully local and deterministic</strong>.</p>
+                </div>
+                <div class="wp-section">
+                    <h3><span>8</span>Security Model</h3>
+                    <p>VelCoin implements:</p>
+                    <ul>
+                        <li>Hash-linked blocks</li>
+                        <li>Proof-of-work style difficulty</li>
+                        <li>Nonce-based transaction ordering</li>
+                        <li>Signature validation</li>
+                        <li>Rate limiting on API endpoints</li>
+                    </ul>
+                    <p><strong>Rate limiting prevents abuse:</strong></p>
+                    <ul>
+                        <li>Default: 20 calls per 60 seconds per IP</li>
+                        <li>Mining: 5 calls per 60 seconds</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comparison -->
+            <div id="comparison" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>9</span>Economic Comparison</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Bitcoin (BTC)</th>
+                                <th>VelCoin (VLC)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Max Supply</strong></td>
+                                <td>21,000,000</td>
+                                <td>1,000,000,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Emission</strong></td>
+                                <td>Gradual via mining</td>
+                                <td>Fully pre-defined</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Halving</strong></td>
+                                <td>Yes</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inflation</strong></td>
+                                <td>Decreasing</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mining</strong></td>
+                                <td>Global PoW</td>
+                                <td>Lightweight PoW</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Initial Distribution</strong></td>
+                                <td>Block rewards</td>
+                                <td>Founder allocation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>VelCoin emphasizes <strong>predictability and controlled distribution</strong>.</p>
+                </div>
+                <div class="wp-section">
+                    <h3><span>10</span>Use Case</h3>
+                    <p>VelCoin is designed to serve as:</p>
+                    <ul>
+                        <li>Native digital currency</li>
+                        <li>Value transfer mechanism</li>
+                        <li>Ecosystem governance asset</li>
+                        <li>Foundation for future decentralized applications</li>
+                    </ul>
+                </div>
+                <div class="wp-section">
+                    <h3><span>11</span>Transparency</h3>
+                    <p>VelCoin provides public endpoints:</p>
+                    <ul>
+                        <li><code>/status</code> - Network status</li>
+                        <li><code>/blocks</code> - Blockchain data</li>
+                        <li><code>/balance/&lt;address&gt;</code> - Address balance</li>
+                        <li><code>/pool</code> - Pool information</li>
+                    </ul>
+                    <p>This allows <strong>full visibility</strong> of network activity.</p>
+                </div>
+            </div>
+
+            <!-- Roadmap WP -->
+            <div id="roadmap-wp" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>12</span>Development Roadmap</h3>
+                    <p><strong>Phase 1 – Mainnet Deployment</strong><br>
+                    Genesis block creation, node operation, network stabilization.</p>
+                    
+                    <p><strong>Phase 2 – Explorer Development</strong><br>
+                    Blockchain explorer for transparent transaction and block viewing.</p>
+                    
+                    <p><strong>Phase 3 – Exchange Listings</strong><br>
+                    Integration with CoinMarketCap, CoinGecko, and trading platforms.</p>
+                    
+                    <p><strong>Phase 4 – Validator Expansion</strong><br>
+                    Network decentralization through additional node operators.</p>
+                    
+                    <p><strong>Phase 5 – Ecosystem dApps</strong><br>
+                    Decentralized applications built on VelCoin infrastructure.</p>
+                </div>
+                <div class="wp-section">
+                    <h3><span>13</span>Conclusion</h3>
+                    <p>VelCoin represents a <strong>controlled, fixed-supply, native blockchain asset</strong> designed for scalability and transparency. With a total supply of 1 billion VLC and a secure transaction validation mechanism, VelCoin offers a predictable digital asset model suitable for ecosystem expansion and exchange integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-tag">Technology</span>
+            <h2>Built for Security & Scale</h2>
+            <p>Every component designed with precision</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Native Blockchain</h3>
+                <p>Not a token on another chain. VelCoin runs on its own mainnet with custom node implementation for complete control and independence.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>SHA-256 Security</h3>
+                <p>Industry-standard cryptographic hashing for block validation, transaction integrity, and wallet generation. Battle-tested security.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightweight PoW</h3>
+                <p>Efficient proof-of-work with adjustable difficulty. Secure without energy waste. Designed for practical validation, not competition.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Nonce Protection</h3>
+                <p>Every transaction includes a strictly increasing nonce. Prevents replay attacks, ensures ordering, and eliminates double-spending.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>JSON State Management</h3>
+                <p>Transparent, human-readable state persistence. Balances, blocks, and mempool all stored in accessible JSON format.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔌</div>
+                <h3>RESTful API</h3>
+                <p>Complete API access for wallets, explorers, and integrations. Rate-limited for stability. Documented for developers.</p>
             </div>
         </div>
     </section>
 
     <!-- Roadmap Section -->
     <section class="roadmap" id="roadmap">
-        <div class="container">
-            <div class="section-header">
-                <h2 style="color: white;">Roadmap</h2>
-                <p style="color: var(--accent);">Our journey to global adoption</p>
-            </div>
-            <div class="roadmap-timeline">
-                <div class="roadmap-item">
-                    <div class="roadmap-number">1</div>
-                    <div class="roadmap-content">
-                        <h3>Network Launch</h3>
-                        <p>Genesis block creation and mainnet deployment with full node operation</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-number">2</div>
-                    <div class="roadmap-content">
-                        <h3>Wallet Development</h3>
-                        <p>Launch of VelWallet for secure asset management and transactions</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-number">3</div>
-                    <div class="roadmap-content">
-                        <h3>Exchange Listings</h3>
-                        <p>Preparation for CoinMarketCap, CoinGecko, and major platform listings</p>
-                    </div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-number">4</div>
-                    <div class="roadmap-content">
-                        <h3>Ecosystem Growth</h3>
-                        <p>Adoption campaigns, strategic partnerships, and dApp integrations</p>
-                    </div>
-                </div>
-            </div>
+        <div class="section-header">
+            <span class="section-tag">Development</span>
+            <h2>Roadmap</h2>
+            <p>Strategic phases to global adoption</p>
         </div>
-    </section>
-
-    <!-- Technology Section -->
-    <section class="tech" id="tech">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technology</h2>
-                <p>Built for security, scalability, and decentralization</p>
+        <div class="roadmap-container">
+            <div class="roadmap-line"></div>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-dot">1</div>
+                <div class="roadmap-content">
+                    <div class="roadmap-phase">Phase 1</div>
+                    <h3>Mainnet Deployment</h3>
+                    <p>Genesis block creation, node infrastructure deployment, and network stabilization for production-ready operation.</p>
+                </div>
             </div>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h4>🔐 Blockchain</h4>
-                    <p>Custom blockchain with Proof-of-Work consensus mechanism ensuring decentralized validation and network security.</p>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-dot">2</div>
+                <div class="roadmap-content">
+                    <div class="roadmap-phase">Phase 2</div>
+                    <h3>Explorer Development</h3>
+                    <p>Blockchain explorer launch for transparent viewing of transactions, blocks, addresses, and network statistics.</p>
                 </div>
-                <div class="tech-card">
-                    <h4>👛 Wallets</h4>
-                    <p>Secure wallet generation with private/public key derivation using industry-standard cryptographic practices.</p>
+            </div>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-dot">3</div>
+                <div class="roadmap-content">
+                    <div class="roadmap-phase">Phase 3</div>
+                    <h3>Exchange Listings</h3>
+                    <p>Strategic integration with CoinMarketCap, CoinGecko, and cryptocurrency exchanges for global liquidity.</p>
                 </div>
-                <div class="tech-card">
-                    <h4>📝 Transactions</h4>
-                    <p>Nonce-based transaction model with signature verification ensuring integrity and preventing replay attacks.</p>
+            </div>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-dot">4</div>
+                <div class="roadmap-content">
+                    <div class="roadmap-phase">Phase 4</div>
+                    <h3>Validator Expansion</h3>
+                    <p>Network decentralization through onboarding of additional node operators and consensus participants.</p>
                 </div>
-                <div class="tech-card">
-                    <h4>⛏️ Mining</h4>
-                    <p>Adjustable difficulty algorithm with mempool transaction collection and SHA256-based block hashing.</p>
-                </div>
-                <div class="tech-card">
-                    <h4>🔌 API Access</h4>
-                    <p>RESTful endpoints for seamless network interactions, wallet operations, and blockchain queries.</p>
-                </div>
-                <div class="tech-card">
-                    <h4>🛡️ Security</h4>
-                    <ul>
-                        <li>Rate limiting on all API endpoints</li>
-                        <li>SHA256 hashing and signature verification</li>
-                        <li>Comprehensive operational logging</li>
-                    </ul>
+            </div>
+            
+            <div class="roadmap-item">
+                <div class="roadmap-dot">5</div>
+                <div class="roadmap-content">
+                    <div class="roadmap-phase">Phase 5</div>
+                    <h3>Ecosystem dApps</h3>
+                    <p>Decentralized application development, strategic partnerships, and real-world utility integration.</p>
                 </div>
             </div>
         </div>
@@ -793,47 +1491,94 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2>Get in Touch</h2>
-        <p>Connect with the VelCoin team</p>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="icon">🌐</div>
-                <h3>Website</h3>
-                <p>https://velcoin-vlc.onrender.com</p>
-            </div>
-            <div class="contact-card">
-                <div class="icon">💬</div>
-                <h3>WhatsApp</h3>
-                <a href="https://wa.me/13156961731" target="_blank">+1 (315) 696-1731</a>
-            </div>
-            <div class="contact-card">
-                <div class="icon">📁</div>
-                <h3>GitHub</h3>
-                <p>Source code available upon request</p>
+        <div class="contact-content">
+            <h2>Connect With VelCoin</h2>
+            <p>Direct channels for investors, partners, and developers</p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">🌐</div>
+                    <h3>Official Website</h3>
+                    <p>Network Information</p>
+                    <div class="website-display">https://velcoin-vlc.onrender.com</div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <p>Direct Communication</p>
+                    <a href="https://wa.me/13156961731" target="_blank">+1 (315) 696-1731</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📁</div>
+                    <h3>Source Code</h3>
+                    <p>Node & Wallet Implementation</p>
+                    <p style="margin-top: 15px; color: rgba(255,255,255,0.7);">Available upon request</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p><strong>VelCoin (VLC)</strong> Whitepaper Version 1.0.0</p>
-        <p>Prepared by Founder, Dainier Velazquez</p>
-        <p class="copyright">&copy; 2026 VelCoin. All rights reserved.</p>
+        <div class="footer-content">
+            <img src="velcoin-logo.png" alt="VelCoin" class="footer-logo">
+            <h3>VelCoin</h3>
+            <p><strong>VelCoin (VLC)</strong> Whitepaper Version 1.0</p>
+            <p>VelCoin Mainnet</p>
+            <p>Prepared by Founder, Dainier Velazquez</p>
+            <p class="copyright">&copy; 2026 VelCoin. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Whitepaper section tabs
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.wp-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.wp-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
-        // Scroll animations
-        const observerOptions = { threshold: 0.1 };
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -843,7 +1588,8 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.wp-section, .tech-card, .contact-card').forEach(el => {
+        // Observe elements
+        document.querySelectorAll('.wp-section, .feature-card, .supply-feature, .roadmap-item, .contact-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
