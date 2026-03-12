@@ -120,16 +120,11 @@
             text-decoration: none;
         }
 
-        .logo-icon {
+        .logo img {
             width: 45px;
             height: 45px;
-            background: var(--gradient-1);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: white;
+            object-fit: cover;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
         }
 
@@ -216,16 +211,11 @@
         }
 
         .hero-logo {
-            width: 180px;
-            height: 180px;
-            background: var(--gradient-1);
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            color: white;
+            object-fit: cover;
             box-shadow: 0 0 80px rgba(139, 92, 246, 0.5), 0 0 120px rgba(139, 92, 246, 0.2);
             animation: floatLogo 4s ease-in-out infinite, fadeInUp 1s ease;
         }
@@ -737,74 +727,6 @@
             background: #F9FAFB;
         }
 
-        /* Features Grid */
-        .features {
-            background: var(--secondary);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: var(--glass);
-            border: 1px solid rgba(139, 92, 246, 0.15);
-            border-radius: 25px;
-            padding: 40px;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(139, 92, 246, 0.4);
-            box-shadow: 0 30px 60px rgba(139, 92, 246, 0.2);
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            margin-bottom: 25px;
-        }
-
-        .feature-card h3 {
-            color: white;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: var(--accent);
-            line-height: 1.8;
-        }
-
         /* Compliance Section */
         .compliance {
             background: var(--darker);
@@ -1099,14 +1021,9 @@
         .footer-logo {
             width: 80px;
             height: 80px;
-            background: var(--gradient-1);
             border-radius: 50%;
             margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            color: white;
+            object-fit: cover;
             box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
         }
 
@@ -1145,6 +1062,11 @@
 
             .hero-subtitle {
                 font-size: 1.4em;
+            }
+
+            .hero-logo {
+                width: 150px;
+                height: 150px;
             }
 
             .hero-stats {
@@ -1197,7 +1119,7 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <div class="logo-icon">V</div>
+                <img src="velcoin-logo.png" alt="VelCoin Logo">
                 <span>VelCoin</span>
             </a>
             <ul class="nav-links">
@@ -1217,7 +1139,7 @@
     <section class="hero" id="about">
         <div class="hero-content">
             <div class="hero-badge">Digital Commerce Ecosystem Blockchain</div>
-            <div class="hero-logo">V</div>
+            <img src="velcoin-logo.png" alt="VelCoin Logo" class="hero-logo">
             <h1>VelCoin</h1>
             <div class="hero-subtitle">Centralized Layer-1 Blockchain for Digital Commerce & Gaming</div>
             <p class="hero-description">
@@ -1797,8 +1719,12 @@ Blockchain (JSON Ledger)
                                 <td>Non-custodial wallet design</td>
                             </tr>
                             <tr>
+                                <td>Securities Law</td>
+                                <td>Utility-only positioning, no equity/ownership rights</td>
+                            </tr>
+                            <tr>
                                 <td>Payment Regulation</td>
-                                <td>No fiat on-ramp, pure utility</td>
+                                <td>No fiat on-ramp, ecosystem utility focus</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1961,7 +1887,7 @@ Blockchain (JSON Ledger)
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">V</div>
+            <img src="velcoin-logo.png" alt="VelCoin Logo" class="footer-logo">
             <h3>VelCoin Network</h3>
             <p><strong>VelCoin (VLC)</strong> - Digital Commerce Ecosystem Blockchain</p>
             <p>Layer-1 Protocol | Fixed Supply | Controlled Architecture</p>
