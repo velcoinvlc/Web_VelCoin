@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VelCoin (VLC) - Native Blockchain | Fixed Supply 1B</title>
+    <title>VelCoin (VLC) - Digital Commerce Ecosystem Blockchain | Fixed Supply 1B</title>
+    <meta name="description" content="VelCoin is a controlled Layer-1 blockchain for digital commerce, gaming rewards, and content marketplaces. Fixed supply of 1,000,000,000 VLC.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -22,6 +23,7 @@
             --light: #F5F3FF;
             --accent: #C4B5FD;
             --success: #10B981;
+            --warning: #F59E0B;
             --gradient-1: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
             --gradient-2: linear-gradient(90deg, #8B5CF6, #EC4899, #8B5CF6);
             --glass: rgba(139, 92, 246, 0.08);
@@ -39,7 +41,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated Background */
+        /* Background Animation */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -118,11 +120,16 @@
             text-decoration: none;
         }
 
-        .logo img {
+        .logo-icon {
             width: 45px;
             height: 45px;
+            background: var(--gradient-1);
             border-radius: 50%;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
         }
 
@@ -209,10 +216,16 @@
         }
 
         .hero-logo {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
+            background: var(--gradient-1);
             border-radius: 50%;
             margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: white;
             box-shadow: 0 0 80px rgba(139, 92, 246, 0.5), 0 0 120px rgba(139, 92, 246, 0.2);
             animation: floatLogo 4s ease-in-out infinite, fadeInUp 1s ease;
         }
@@ -235,7 +248,7 @@
 
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 5em;
+            font-size: 4.5em;
             font-weight: 800;
             color: white;
             margin-bottom: 10px;
@@ -250,20 +263,19 @@
             to { background-position: 200% center; }
         }
 
-        .hero-ticker {
+        .hero-subtitle {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5em;
-            font-weight: 600;
+            font-size: 1.8em;
+            font-weight: 500;
             color: var(--primary-light);
-            letter-spacing: 10px;
             margin-bottom: 20px;
             animation: fadeInUp 1s ease 0.4s both;
         }
 
         .hero-description {
-            font-size: 1.3em;
+            font-size: 1.2em;
             color: var(--accent);
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 40px;
             line-height: 1.8;
             animation: fadeInUp 1s ease 0.6s both;
@@ -283,7 +295,7 @@
 
         .hero-stat-value {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5em;
+            font-size: 2.2em;
             font-weight: 700;
             color: white;
             display: block;
@@ -291,7 +303,7 @@
 
         .hero-stat-label {
             color: var(--accent);
-            font-size: 0.9em;
+            font-size: 0.85em;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -392,11 +404,11 @@
         .section-header p {
             color: var(--accent);
             font-size: 1.1em;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        /* Supply Highlight */
+        /* Supply Section */
         .supply-section {
             background: var(--secondary);
             position: relative;
@@ -420,6 +432,7 @@
             border: 1px solid rgba(139, 92, 246, 0.2);
             border-radius: 30px;
             backdrop-filter: blur(10px);
+            margin-bottom: 50px;
         }
 
         .supply-label {
@@ -446,11 +459,46 @@
             font-weight: 600;
         }
 
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+        }
+
+        .tokenomics-card {
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tokenomics-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        .tokenomics-percent {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary-light);
+            margin-bottom: 10px;
+        }
+
+        .tokenomics-label {
+            color: var(--accent);
+            font-size: 0.95em;
+        }
+
         .supply-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin-top: 50px;
         }
 
         .supply-feature {
@@ -488,6 +536,62 @@
         .supply-feature p {
             color: var(--accent);
             font-size: 0.95em;
+        }
+
+        /* Architecture Section */
+        .architecture {
+            background: var(--darker);
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .arch-card {
+            background: var(--glass);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.4s;
+        }
+
+        .arch-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 30px 60px rgba(139, 92, 246, 0.2);
+        }
+
+        .arch-card h3 {
+            color: var(--primary-light);
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arch-card ul {
+            list-style: none;
+        }
+
+        .arch-card li {
+            color: var(--accent);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .arch-card li:last-child {
+            border-bottom: none;
+        }
+
+        .arch-label {
+            color: #6B7280;
         }
 
         /* Whitepaper Section */
@@ -701,9 +805,83 @@
             line-height: 1.8;
         }
 
+        /* Compliance Section */
+        .compliance {
+            background: var(--darker);
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .compliance-card {
+            background: var(--glass);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 25px;
+            padding: 35px;
+            transition: all 0.3s;
+        }
+
+        .compliance-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .compliance-card h3 {
+            color: var(--primary-light);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compliance-card p {
+            color: var(--accent);
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        .risk-matrix {
+            margin-top: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--glass);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .risk-table th {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .risk-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+        }
+
+        .risk-table tr:last-child td {
+            border-bottom: none;
+        }
+
         /* Roadmap */
         .roadmap {
-            background: var(--darker);
+            background: var(--secondary);
         }
 
         .roadmap-container {
@@ -921,8 +1099,14 @@
         .footer-logo {
             width: 80px;
             height: 80px;
+            background: var(--gradient-1);
             border-radius: 50%;
-            margin-bottom: 25px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
             box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
         }
 
@@ -959,8 +1143,8 @@
                 font-size: 3em;
             }
 
-            .hero-ticker {
-                font-size: 1.8em;
+            .hero-subtitle {
+                font-size: 1.4em;
             }
 
             .hero-stats {
@@ -1013,14 +1197,15 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="velcoin-logo.png" alt="VelCoin">
+                <div class="logo-icon">V</div>
                 <span>VelCoin</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#supply">Supply</a></li>
+                <li><a href="#supply">Tokenomics</a></li>
+                <li><a href="#architecture">Architecture</a></li>
                 <li><a href="#whitepaper">Whitepaper</a></li>
-                <li><a href="#features">Features</a></li>
+                <li><a href="#compliance">Compliance</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1031,69 +1216,180 @@
     <!-- Hero Section -->
     <section class="hero" id="about">
         <div class="hero-content">
-            <div class="hero-badge">Native Blockchain Mainnet</div>
-            <img src="velcoin-logo.png" alt="VelCoin Logo" class="hero-logo">
+            <div class="hero-badge">Digital Commerce Ecosystem Blockchain</div>
+            <div class="hero-logo">V</div>
             <h1>VelCoin</h1>
-            <div class="hero-ticker">VLC</div>
+            <div class="hero-subtitle">Centralized Layer-1 Blockchain for Digital Commerce & Gaming</div>
             <p class="hero-description">
-                A controlled, fixed-supply native blockchain asset designed for scalability and transparency. 
-                No inflation. No hidden minting. Complete monetary predictability.
+                A controlled, fixed-supply blockchain infrastructure designed for digital marketplaces, 
+                gaming reward systems, and content licensing. Currently operating under centralized 
+                node architecture with a transparent roadmap to gradual decentralization.
             </p>
             <div class="hero-stats">
                 <div class="hero-stat">
                     <span class="hero-stat-value">1,000,000,000</span>
-                    <span class="hero-stat-label">Fixed Supply</span>
+                    <span class="hero-stat-label">Fixed Supply VLC</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">Python/Flask</span>
+                    <span class="hero-stat-label">Core Node Stack</span>
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-value">SHA-256</span>
-                    <span class="hero-stat-label">Proof of Work</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="hero-stat-value">100%</span>
-                    <span class="hero-stat-label">Transparent</span>
+                    <span class="hero-stat-label">PoW Validation</span>
                 </div>
             </div>
             <div class="hero-buttons">
-                <a href="#whitepaper" class="btn btn-primary">Read Whitepaper</a>
-                <a href="#contact" class="btn btn-secondary">Connect With Us</a>
+                <a href="#whitepaper" class="btn btn-primary">Read Technical Whitepaper</a>
+                <a href="#architecture" class="btn btn-secondary">View Architecture</a>
             </div>
         </div>
     </section>
 
-    <!-- Supply Section -->
+    <!-- Supply & Tokenomics Section -->
     <section class="supply-section" id="supply">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Monetary Policy</span>
-                <h2>Immutable Supply</h2>
-                <p>Mathematically guaranteed. Protocol-enforced. Forever.</p>
+                <span class="section-tag">Tokenomics</span>
+                <h2>Economic Model</h2>
+                <p>Fixed supply, transparent distribution, utility-focused ecosystem</p>
             </div>
+            
             <div class="supply-display">
                 <div class="supply-label">Total Maximum Supply</div>
                 <div class="supply-value">1,000,000,000</div>
                 <div class="supply-ticker">VLC</div>
             </div>
+
+            <div class="tokenomics-grid">
+                <div class="tokenomics-card">
+                    <div class="tokenomics-percent">40%</div>
+                    <div class="tokenomics-label">Ecosystem Development</div>
+                </div>
+                <div class="tokenomics-card">
+                    <div class="tokenomics-percent">25%</div>
+                    <div class="tokenomics-label">Gaming Rewards</div>
+                </div>
+                <div class="tokenomics-card">
+                    <div class="tokenomics-percent">20%</div>
+                    <div class="tokenomics-label">Marketplace Liquidity</div>
+                </div>
+                <div class="tokenomics-card">
+                    <div class="tokenomics-percent">10%</div>
+                    <div class="tokenomics-label">Team & Foundation</div>
+                </div>
+                <div class="tokenomics-card">
+                    <div class="tokenomics-percent">5%</div>
+                    <div class="tokenomics-label">Strategic Reserve</div>
+                </div>
+            </div>
+
             <div class="supply-features">
                 <div class="supply-feature">
                     <div class="supply-feature-icon">🔒</div>
-                    <h3>Fixed Forever</h3>
-                    <p>No inflationary minting after genesis. The supply is immutable and cannot exceed 1 billion VLC.</p>
+                    <h3>Immutable Supply</h3>
+                    <p>No inflationary minting after genesis. Supply fixed forever at 1 billion VLC through protocol enforcement.</p>
                 </div>
                 <div class="supply-feature">
-                    <div class="supply-feature-icon">📊</div>
-                    <h3>Transparent Distribution</h3>
-                    <p>All balances tracked in state.json. Total supply calculated dynamically for mathematical consistency.</p>
+                    <div class="supply-feature-icon">🎮</div>
+                    <h3>Gaming Economy</h3>
+                    <p>25% allocated for game rewards. Players earn VLC through achievements, tournaments, and in-game purchases.</p>
                 </div>
                 <div class="supply-feature">
-                    <div class="supply-feature-icon">🎯</div>
-                    <h3>Controlled Allocation</h3>
-                    <p>Pre-allocated to Founder Wallet with distribution via on-chain transactions. No hidden mechanisms.</p>
+                    <div class="supply-feature-icon">🛒</div>
+                    <h3>Marketplace Utility</h3>
+                    <p>Primary currency for digital content marketplace. Software, media, tools, and licenses purchased with VLC.</p>
                 </div>
                 <div class="supply-feature">
                     <div class="supply-feature-icon">⚡</div>
-                    <h3>Predictable Structure</h3>
-                    <p>No halving. No block rewards. No surprises. Pure monetary predictability from day one.</p>
+                    <h3>Deflationary Option</h3>
+                    <p>Optional 2% transaction fee burn mechanism creates deflationary pressure and scarcity over time.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture" id="architecture">
+        <div class="section-header">
+            <span class="section-tag">System Design</span>
+            <h2>Technical Architecture</h2>
+            <p>Centralized Layer-1 with modular components and transparent data structure</p>
+        </div>
+
+        <div class="arch-grid">
+            <div class="arch-card">
+                <h3>🔧 Node Stack</h3>
+                <ul>
+                    <li><span class="arch-label">Backend</span> <span>Python</span></li>
+                    <li><span class="arch-label">Framework</span> <span>Flask</span></li>
+                    <li><span class="arch-label">API</span> <span>RESTful</span></li>
+                    <li><span class="arch-label">Storage</span> <span>JSON Files</span></li>
+                    <li><span class="arch-label">Database</span> <span>SQLite (Marketplace)</span></li>
+                    <li><span class="arch-label">Backup</span> <span>GitHub API</span></li>
+                </ul>
+            </div>
+            
+            <div class="arch-card">
+                <h3>📦 Data Files</h3>
+                <ul>
+                    <li><span class="arch-label">blockchain.json</span> <span>Blocks</span></li>
+                    <li><span class="arch-label">state.json</span> <span>Balances</span></li>
+                    <li><span class="arch-label">mempool.json</span> <span>Pending TX</span></li>
+                    <li><span class="arch-label">nonces.json</span> <span>Nonce Tracking</span></li>
+                </ul>
+            </div>
+
+            <div class="arch-card">
+                <h3>🔗 Block Structure</h3>
+                <div class="code-block" style="font-size: 0.8em; padding: 15px;">
+{
+  index: integer,
+  timestamp: integer,
+  previous_hash: string,
+  transactions: array,
+  nonce: integer,
+  difficulty: integer,
+  hash: string
+}</div>
+            </div>
+
+            <div class="arch-card">
+                <h3>💱 Transaction Model</h3>
+                <div class="code-block" style="font-size: 0.8em; padding: 15px;">
+{
+  from: address,
+  to: address,
+  amount: integer,
+  nonce: integer,
+  public_key: string,
+  signature: string,
+  tx_hash: string
+}</div>
+            </div>
+
+            <div class="arch-card">
+                <h3>⛏️ PoW Mechanism</h3>
+                <ul>
+                    <li><span class="arch-label">Algorithm</span> <span>SHA-256</span></li>
+                    <li><span class="arch-label">Purpose</span> <span>Data Integrity</span></li>
+                    <li><span class="arch-label">Target</span> <span>4 Leading Zeros</span></li>
+                    <li><span class="arch-label">Function</span> <span>Spam Prevention</span></li>
+                </ul>
+                <p style="color: var(--accent); font-size: 0.9em; margin-top: 15px;">
+                    <em>Note: Local PoW for block validation, not distributed consensus mining.</em>
+                </p>
+            </div>
+
+            <div class="arch-card">
+                <h3>🌐 API Endpoints</h3>
+                <ul>
+                    <li><span class="arch-label">GET</span> <span>/api/chain</span></li>
+                    <li><span class="arch-label">GET</span> <span>/api/block/&lt;height&gt;</span></li>
+                    <li><span class="arch-label">GET</span> <span>/api/balance/&lt;address&gt;</span></li>
+                    <li><span class="arch-label">POST</span> <span>/api/transaction</span></li>
+                    <li><span class="arch-label">POST</span> <span>/api/marketplace/buy</span></li>
+                </ul>
             </div>
         </div>
     </section>
@@ -1103,332 +1399,486 @@
         <div class="wp-container">
             <div class="section-header">
                 <span class="section-tag">Documentation</span>
-                <h2>Whitepaper</h2>
-                <p>Complete technical and economic specification</p>
+                <h2>Technical Whitepaper</h2>
+                <p>Complete specification of the VelCoin Protocol</p>
             </div>
 
             <div class="wp-nav">
                 <button class="wp-nav-btn active" onclick="showSection('overview')">Overview</button>
                 <button class="wp-nav-btn" onclick="showSection('monetary')">Monetary Policy</button>
-                <button class="wp-nav-btn" onclick="showSection('architecture')">Architecture</button>
-                <button class="wp-nav-btn" onclick="showSection('consensus')">Consensus</button>
-                <button class="wp-nav-btn" onclick="showSection('transactions')">Transactions</button>
-                <button class="wp-nav-btn" onclick="showSection('comparison')">Comparison</button>
-                <button class="wp-nav-btn" onclick="showSection('roadmap-wp')">Roadmap</button>
+                <button class="wp-nav-btn" onclick="showSection('protocol')">Protocol Spec</button>
+                <button class="wp-nav-btn" onclick="showSection('marketplace')">Marketplace</button>
+                <button class="wp-nav-btn" onclick="showSection('gaming')">Gaming SDK</button>
+                <button class="wp-nav-btn" onclick="showSection('legal')">Legal Framework</button>
+                <button class="wp-nav-btn" onclick="showSection('roadmap-wp')">Decentralization</button>
             </div>
 
             <!-- Overview -->
             <div id="overview" class="wp-content active">
                 <div class="wp-section">
                     <h3><span>1</span>Executive Summary</h3>
-                    <p>VelCoin (VLC) is a <strong>native blockchain-based digital currency</strong> designed to provide a lightweight, scalable, and controlled-value ecosystem. Unlike tokens deployed on third-party blockchains, VelCoin operates on its own mainnet infrastructure with a custom node implementation.</p>
-                    <p>VelCoin has a <strong>fixed total supply of 1,000,000,000 VLC</strong>. The total supply is immutable and fully defined at the protocol level.</p>
-                    <p><strong>Key Focus Areas:</strong></p>
+                    <p>VelCoin (VLC) is a <strong>centralized Layer-1 blockchain infrastructure</strong> designed for digital commerce ecosystems, online marketplaces, and gaming reward systems. Unlike fully decentralized cryptocurrencies, VelCoin adopts a controlled architecture operated by a single node operator during its initial phase.</p>
+                    <p>This approach enables:</p>
                     <ul>
-                        <li>Simplicity of infrastructure</li>
-                        <li>Controlled and transparent distribution</li>
-                        <li>Lightweight mining validation</li>
-                        <li>Secure transaction model with nonce-based protection</li>
-                        <li>Modular node architecture</li>
+                        <li>High scalability and predictable transaction costs</li>
+                        <li>Simplified integration for developers and merchants</li>
+                        <li>Regulatory compliance and fraud prevention</li>
+                        <li>Rapid ecosystem deployment with modular components</li>
                     </ul>
+                    <p>VelCoin aims to power a digital economy for content marketplaces, micro-transactions, and reward systems, with a transparent roadmap toward gradual decentralization through a federated validator model.</p>
+                </div>
+                
+                <div class="wp-section">
+                    <h3><span>2</span>Centralization Declaration</h3>
+                    <p><strong>Important Legal Notice:</strong></p>
+                    <p>VelCoin currently operates under a <strong>centralized node architecture</strong> managed by the VelCoin Node Operator. This is explicitly disclosed and forms part of our regulatory compliance strategy.</p>
+                    <p>We do not present VelCoin as a decentralized cryptocurrency, but rather as a:</p>
+                    <div class="code-block">Digital Commerce Ecosystem Blockchain</div>
+                    <p>This positioning reduces regulatory risks, aligns with our marketplace and gaming focus, and facilitates enterprise adoption.</p>
                 </div>
             </div>
 
             <!-- Monetary Policy -->
             <div id="monetary" class="wp-content">
                 <div class="wp-section">
-                    <h3><span>2.1</span>Total Supply</h3>
+                    <h3><span>3.1</span>Fixed Supply Model</h3>
                     <ul>
-                        <li><strong>Maximum Supply:</strong> 1,000,000,000 VLC</li>
-                        <li><strong>Circulating Supply:</strong> Determined by balances stored in state.json</li>
-                        <li><strong>Supply Mechanism:</strong> Fixed supply, pre-allocated to the Founder Wallet</li>
+                        <li><strong>Maximum Supply:</strong> 1,000,000,000 VLC (immutable)</li>
+                        <li><strong>Circulating Supply:</strong> Dynamically calculated from state.json</li>
+                        <li><strong>Distribution:</strong> Pre-allocated at genesis to Founder Wallet</li>
+                        <li><strong>Emission:</strong> No block rewards, no halving, no inflation</li>
                     </ul>
-                    <p>VelCoin <strong>does not implement inflationary minting after genesis</strong>. The supply is fixed and cannot exceed 1 billion VLC.</p>
+                    <p>Supply verification: <code>sum(all balances in state.json) = 1,000,000,000</code></p>
                 </div>
+                
                 <div class="wp-section">
-                    <h3><span>2.2</span>Distribution Model</h3>
-                    <p>At network initialization:</p>
-                    <ul>
-                        <li>The total supply is assigned to a Founder Wallet</li>
-                        <li>Distribution occurs via on-chain transactions</li>
-                        <li>No automatic block rewards are generated</li>
-                    </ul>
-                    <p><strong>This model ensures:</strong></p>
-                    <ul>
-                        <li>Predictable monetary structure</li>
-                        <li>No hidden minting mechanisms</li>
-                        <li>Full transparency through state tracking</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Architecture -->
-            <div id="architecture" class="wp-content">
-                <div class="wp-section">
-                    <h3><span>3.1</span>Network Type</h3>
-                    <ul>
-                        <li><strong>Network:</strong> velcoin-mainnet</li>
-                        <li>Custom blockchain implementation</li>
-                        <li>JSON-based state persistence</li>
-                    </ul>
-                </div>
-                <div class="wp-section">
-                    <h3><span>3.2</span>Block Structure</h3>
-                    <div class="code-block">
-{
-  index,
-  timestamp,
-  transactions,
-  previous_hash,
-  nonce,
-  block_hash
-}</div>
-                </div>
-                <div class="wp-section">
-                    <h3><span>3.3</span>Genesis Block</h3>
-                    <ul>
-                        <li>The network creates a genesis block if no chain exists</li>
-                        <li><strong>Previous hash:</strong> 64 zeros</li>
-                        <li><strong>Transactions:</strong> Empty</li>
-                        <li><strong>Hash:</strong> Computed via SHA-256</li>
-                    </ul>
-                </div>
-                <div class="wp-section">
-                    <h3><span>7</span>State Management</h3>
-                    <p>VelCoin uses JSON-based persistence:</p>
-                    <ul>
-                        <li><strong>state.json</strong> → balances</li>
-                        <li><strong>blockchain.json</strong> → chain</li>
-                        <li><strong>mempool.json</strong> → pending transactions</li>
-                        <li><strong>nonces.json</strong> → nonce tracking</li>
-                    </ul>
-                    <p>Total supply is calculated dynamically:</p>
-                    <div class="code-block">sum(all balances)</div>
-                    <p>This ensures <strong>mathematical consistency</strong> across the ledger.</p>
-                </div>
-            </div>
-
-            <!-- Consensus -->
-            <div id="consensus" class="wp-content">
-                <div class="wp-section">
-                    <h3><span>4</span>Consensus Mechanism</h3>
-                    <p>VelCoin uses a <strong>lightweight Proof-of-Work inspired hashing validation</strong>.</p>
-                    <p><strong>Parameters:</strong></p>
-                    <ul>
-                        <li><strong>Hashing algorithm:</strong> SHA-256</li>
-                        <li><strong>Difficulty:</strong> 4 leading zeros</li>
-                    </ul>
-                    <p><strong>Block mining process:</strong></p>
-                    <ol>
-                        <li>Nonce incremented until hash satisfies difficulty</li>
-                        <li>Valid hash appended to chain</li>
-                        <li>Transactions included from mempool</li>
-                    </ol>
-                    <p><strong>This provides:</strong></p>
-                    <ul>
-                        <li>Basic computational validation</li>
-                        <li>Chain integrity</li>
-                        <li>Block immutability via hash chaining</li>
-                    </ul>
-                    <p><em>It is not designed to compete with Bitcoin's global PoW but instead to provide a secure and efficient network model.</em></p>
-                </div>
-            </div>
-
-            <!-- Transactions -->
-            <div id="transactions" class="wp-content">
-                <div class="wp-section">
-                    <h3><span>5.1</span>Transaction Fields</h3>
-                    <p>Each transaction includes:</p>
-                    <ul>
-                        <li><strong>from</strong> - sender address</li>
-                        <li><strong>to</strong> - recipient address</li>
-                        <li><strong>amount</strong> - VLC amount</li>
-                        <li><strong>nonce</strong> - transaction sequence</li>
-                        <li><strong>public_key</strong> - sender's public key</li>
-                        <li><strong>signature</strong> - cryptographic signature</li>
-                    </ul>
-                </div>
-                <div class="wp-section">
-                    <h3><span>5.2</span>Signature Verification</h3>
-                    <p><strong>Signature logic:</strong></p>
-                    <div class="code-block">expected = sha256(sha256(public_key) + payload)</div>
-                    <p><strong>Transactions are valid only if:</strong></p>
-                    <ul>
-                        <li>Address matches derived public key</li>
-                        <li>Signature matches expected hash</li>
-                        <li>Nonce is strictly increasing</li>
-                        <li>Sender balance is sufficient</li>
-                    </ul>
-                    <p><strong>This protects against:</strong></p>
-                    <ul>
-                        <li>Replay attacks</li>
-                        <li>Double spending</li>
-                        <li>Signature forgery</li>
-                    </ul>
-                </div>
-                <div class="wp-section">
-                    <h3><span>6</span>Wallet System</h3>
-                    <p>Wallets are generated with:</p>
-                    <ul>
-                        <li>64-character hexadecimal private key</li>
-                        <li>Public key derived via SHA-256</li>
-                        <li>Address derived from public key hash (first 40 chars)</li>
-                    </ul>
-                    <p>Wallet generation is <strong>fully local and deterministic</strong>.</p>
-                </div>
-                <div class="wp-section">
-                    <h3><span>8</span>Security Model</h3>
-                    <p>VelCoin implements:</p>
-                    <ul>
-                        <li>Hash-linked blocks</li>
-                        <li>Proof-of-work style difficulty</li>
-                        <li>Nonce-based transaction ordering</li>
-                        <li>Signature validation</li>
-                        <li>Rate limiting on API endpoints</li>
-                    </ul>
-                    <p><strong>Rate limiting prevents abuse:</strong></p>
-                    <ul>
-                        <li>Default: 20 calls per 60 seconds per IP</li>
-                        <li>Mining: 5 calls per 60 seconds</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Comparison -->
-            <div id="comparison" class="wp-content">
-                <div class="wp-section">
-                    <h3><span>9</span>Economic Comparison</h3>
+                    <h3><span>3.2</span>Token Distribution</h3>
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th>Feature</th>
-                                <th>Bitcoin (BTC)</th>
-                                <th>VelCoin (VLC)</th>
+                                <th>Category</th>
+                                <th>Percentage</th>
+                                <th>Allocation</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Max Supply</strong></td>
-                                <td>21,000,000</td>
-                                <td>1,000,000,000</td>
+                                <td>Ecosystem Development</td>
+                                <td>40%</td>
+                                <td>400,000,000 VLC</td>
                             </tr>
                             <tr>
-                                <td><strong>Emission</strong></td>
-                                <td>Gradual via mining</td>
-                                <td>Fully pre-defined</td>
+                                <td>Gaming Rewards</td>
+                                <td>25%</td>
+                                <td>250,000,000 VLC</td>
                             </tr>
                             <tr>
-                                <td><strong>Halving</strong></td>
-                                <td>Yes</td>
-                                <td>No</td>
+                                <td>Marketplace Liquidity</td>
+                                <td>20%</td>
+                                <td>200,000,000 VLC</td>
                             </tr>
                             <tr>
-                                <td><strong>Inflation</strong></td>
-                                <td>Decreasing</td>
-                                <td>None</td>
+                                <td>Team & Foundation</td>
+                                <td>10%</td>
+                                <td>100,000,000 VLC</td>
                             </tr>
                             <tr>
-                                <td><strong>Mining</strong></td>
-                                <td>Global PoW</td>
-                                <td>Lightweight PoW</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Initial Distribution</strong></td>
-                                <td>Block rewards</td>
-                                <td>Founder allocation</td>
+                                <td>Strategic Reserve</td>
+                                <td>5%</td>
+                                <td>50,000,000 VLC</td>
                             </tr>
                         </tbody>
                     </table>
-                    <p>VelCoin emphasizes <strong>predictability and controlled distribution</strong>.</p>
                 </div>
+
                 <div class="wp-section">
-                    <h3><span>10</span>Use Case</h3>
-                    <p>VelCoin is designed to serve as:</p>
+                    <h3><span>3.3</span>Economic Flow</h3>
+                    <div class="code-block">
+Games → Wallet → Marketplace → Ecosystem
+                    </div>
+                    <p>VelCoin maintains internal value flow through:</p>
                     <ul>
-                        <li>Native digital currency</li>
-                        <li>Value transfer mechanism</li>
-                        <li>Ecosystem governance asset</li>
-                        <li>Foundation for future decentralized applications</li>
+                        <li>Players earning VLC via game achievements</li>
+                        <li>Spending VLC in marketplace for digital content</li>
+                        <li>Developers paying API fees in VLC</li>
+                        <li>Optional 2% burn fee creating deflationary pressure</li>
                     </ul>
-                </div>
-                <div class="wp-section">
-                    <h3><span>11</span>Transparency</h3>
-                    <p>VelCoin provides public endpoints:</p>
-                    <ul>
-                        <li><code>/status</code> - Network status</li>
-                        <li><code>/blocks</code> - Blockchain data</li>
-                        <li><code>/balance/&lt;address&gt;</code> - Address balance</li>
-                        <li><code>/pool</code> - Pool information</li>
-                    </ul>
-                    <p>This allows <strong>full visibility</strong> of network activity.</p>
                 </div>
             </div>
 
-            <!-- Roadmap WP -->
+            <!-- Protocol Spec -->
+            <div id="protocol" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>4.1</span>Network Architecture</h3>
+                    <p><strong>Network Type:</strong> velcoin-mainnet (Layer-1)</p>
+                    <p><strong>Consensus:</strong> Centralized PoW Validation (not distributed mining)</p>
+                    <p><strong>Node Operator:</strong> Single authorized validator during Phase 1</p>
+                    
+                    <p><strong>Block Creation Process:</strong></p>
+                    <ol>
+                        <li>Collect transactions from mempool</li>
+                        <li>Construct block header with previous hash</li>
+                        <li>Execute local PoW (SHA-256, 4 leading zeros)</li>
+                        <li>Validate all transactions</li>
+                        <li>Append to blockchain.json</li>
+                        <li>Update state.json balances</li>
+                    </ol>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>4.2</span>Security Model</h3>
+                    <p><strong>Validation Layers:</strong></p>
+                    <ul>
+                        <li>SHA-256 hash-linked blocks</li>
+                        <li>PoW difficulty for block integrity</li>
+                        <li>Nonce-based transaction ordering (replay protection)</li>
+                        <li>ECDSA-style signature verification</li>
+                        <li>API rate limiting (20 req/min default, 5 req/min mining)</li>
+                    </ul>
+                    <p><strong>Backup System:</strong> Automated GitHub repository backups for disaster recovery and version control.</p>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>4.3</span>Wallet & Keys</h3>
+                    <ul>
+                        <li><strong>Private Key:</strong> 64-character hexadecimal (local generation)</li>
+                        <li><strong>Public Key:</strong> SHA-256 hash of private key</li>
+                        <li><strong>Address:</strong> First 40 characters of public key hash</li>
+                        <li><strong>Security:</strong> Fully local, deterministic, non-custodial</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Marketplace -->
+            <div id="marketplace" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>5.1</span>Digital Commerce Platform</h3>
+                    <p>VelCoin includes an integrated marketplace for digital content distribution:</p>
+                    <ul>
+                        <li>Software and applications</li>
+                        <li>Media files and documents</li>
+                        <li>Digital tools and utilities</li>
+                        <li>In-game items and skins</li>
+                    </ul>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>5.2</span>License System</h3>
+                    <p>Each purchase generates a temporary, trackable license:</p>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Value</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Expiration</td>
+                                <td>10 minutes</td>
+                                <td>Time-limited access window</td>
+                            </tr>
+                            <tr>
+                                <td>Max Downloads</td>
+                                <td>3 attempts</td>
+                                <td>Prevent unauthorized distribution</td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>Temporary License</td>
+                                <td>Digital rights management</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>License structure includes: <code>license_id, user_id, product_id, expires_at, download_count</code></p>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>5.3</span>Purchase Flow</h3>
+                    <div class="code-block">
+User Wallet
+   ↓
+Marketplace Request
+   ↓
+Transaction Creation (VLC)
+   ↓
+Blockchain Verification
+   ↓
+License Activation
+   ↓
+Digital Content Download
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gaming SDK -->
+            <div id="gaming" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>6.1</span>SDK Architecture</h3>
+                    <div class="code-block">
+Game Server
+     ↓
+VelCoin SDK
+     ↓
+VelCoin API
+     ↓
+Blockchain (JSON Ledger)
+                    </div>
+                    <p>Easy integration for game developers with minimal blockchain expertise required.</p>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>6.2</span>Core SDK Functions</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>rewardPlayer()</code></td>
+                                <td>Issue VLC for achievements/quests</td>
+                            </tr>
+                            <tr>
+                                <td><code>getBalance()</code></td>
+                                <td>Check player VLC balance</td>
+                            </tr>
+                            <tr>
+                                <td><code>sendTransaction()</code></td>
+                                <td>Transfer VLC between players</td>
+                            </tr>
+                            <tr>
+                                <td><code>verifyPayment()</code></td>
+                                <td>Confirm in-game purchases</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>6.3</span>Use Cases</h3>
+                    <ul>
+                        <li><strong>Achievement Rewards:</strong> Players earn VLC for completing missions</li>
+                        <li><strong>Tournament Prizes:</strong> Competitive gaming with VLC payouts</li>
+                        <li><strong>In-Game Economy:</strong> Buy skins, items, upgrades with VLC</li>
+                        <li><strong>Cross-Game Currency:</strong> Unified reward system across partner games</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal Framework -->
+            <div id="legal" class="wp-content">
+                <div class="wp-section">
+                    <h3><span>7.1</span>Asset Classification</h3>
+                    <p>VelCoin (VLC) is classified as a <strong>Digital Utility Asset</strong> designed for:</p>
+                    <ul>
+                        <li>Marketplace payments and digital content purchases</li>
+                        <li>Gaming rewards and in-game economies</li>
+                        <li>Microtransactions within the VelCoin ecosystem</li>
+                        <li>Developer API service fees</li>
+                    </ul>
+                    <p><strong>Explicitly NOT:</strong> Investment contract, security, or commodity asset. No ownership or equity rights conferred.</p>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>7.2</span>Jurisdictional Compliance</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Jurisdiction</th>
+                                <th>Regulator</th>
+                                <th>Classification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>United States</td>
+                                <td>SEC / CFTC</td>
+                                <td>Utility (Howey Test mitigation)</td>
+                            </tr>
+                            <tr>
+                                <td>European Union</td>
+                                <td>MiCA</td>
+                                <td>Crypto-asset Utility</td>
+                            </tr>
+                            <tr>
+                                <td>Spain</td>
+                                <td>CNMV</td>
+                                <td>Advertising registration required</td>
+                            </tr>
+                            <tr>
+                                <td>Switzerland</td>
+                                <td>FINMA</td>
+                                <td>Utility Token</td>
+                            </tr>
+                            <tr>
+                                <td>Singapore</td>
+                                <td>MAS</td>
+                                <td>Digital Payment Token</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="wp-section">
+                    <h3><span>7.3</span>Terms of Service</h3>
+                    <p>Key user agreements:</p>
+                    <ul>
+                        <li>VLC is solely for use within the VelCoin ecosystem</li>
+                        <li>Marketplace provides digital content distribution, not financial exchange</li>
+                        <li>Users responsible for securing private keys and wallets</li>
+                        <li>Operator does not guarantee VLC market value</li>
+                        <li>Digital licenses expire after time/download limits</li>
+                        <li>Platform use must comply with local laws</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Decentralization Roadmap -->
             <div id="roadmap-wp" class="wp-content">
                 <div class="wp-section">
-                    <h3><span>12</span>Development Roadmap</h3>
-                    <p><strong>Phase 1 – Mainnet Deployment</strong><br>
-                    Genesis block creation, node operation, network stabilization.</p>
+                    <h3><span>8</span>Gradual Decentralization Plan</h3>
                     
-                    <p><strong>Phase 2 – Explorer Development</strong><br>
-                    Blockchain explorer for transparent transaction and block viewing.</p>
-                    
-                    <p><strong>Phase 3 – Exchange Listings</strong><br>
-                    Integration with CoinMarketCap, CoinGecko, and trading platforms.</p>
-                    
-                    <p><strong>Phase 4 – Validator Expansion</strong><br>
-                    Network decentralization through additional node operators.</p>
-                    
-                    <p><strong>Phase 5 – Ecosystem dApps</strong><br>
-                    Decentralized applications built on VelCoin infrastructure.</p>
+                    <p><strong>Phase 1 (Current): Centralized Network</strong></p>
+                    <ul>
+                        <li>Single node operator</li>
+                        <li>Marketplace integration</li>
+                        <li>Gaming API deployment</li>
+                        <li>Legal framework establishment</li>
+                    </ul>
+
+                    <p><strong>Phase 2 (6-12 months): Federated Validators</strong></p>
+                    <ul>
+                        <li>Authorized validator nodes</li>
+                        <li>Proof-of-Authority consensus</li>
+                        <li>Partner operator onboarding</li>
+                        <li>Enhanced network redundancy</li>
+                    </ul>
+
+                    <p><strong>Phase 3 (12-24 months): Partial Decentralization</strong></p>
+                    <ul>
+                        <li>Public node access</li>
+                        <li>Community governance introduction</li>
+                        <li>P2P networking layer (libp2p)</li>
+                        <li>Transition to LevelDB storage</li>
+                    </ul>
+
+                    <p><strong>Phase 4 (Future): DAO Governance</strong></p>
+                    <ul>
+                        <li>Decentralized autonomous organization</li>
+                        <li>Smart contract layer</li>
+                        <li>Full community governance</li>
+                    </ul>
                 </div>
+
                 <div class="wp-section">
-                    <h3><span>13</span>Conclusion</h3>
-                    <p>VelCoin represents a <strong>controlled, fixed-supply, native blockchain asset</strong> designed for scalability and transparency. With a total supply of 1 billion VLC and a secure transaction validation mechanism, VelCoin offers a predictable digital asset model suitable for ecosystem expansion and exchange integration.</p>
+                    <h3><span>9</span>Risk Mitigation</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Risk</th>
+                                <th>Mitigation Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Centralization</td>
+                                <td>Published decentralization roadmap</td>
+                            </tr>
+                            <tr>
+                                <td>AML Compliance</td>
+                                <td>Transaction limits, monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Custody Risk</td>
+                                <td>Non-custodial wallet design</td>
+                            </tr>
+                            <tr>
+                                <td>Payment Regulation</td>
+                                <td>No fiat on-ramp, pure utility</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Compliance Section -->
+    <section class="compliance" id="compliance">
         <div class="section-header">
-            <span class="section-tag">Technology</span>
-            <h2>Built for Security & Scale</h2>
-            <p>Every component designed with precision</p>
+            <span class="section-tag">Legal & Compliance</span>
+            <h2>Regulatory Framework</h2>
+            <p>Multi-jurisdictional compliance strategy and risk management</p>
         </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🔗</div>
-                <h3>Native Blockchain</h3>
-                <p>Not a token on another chain. VelCoin runs on its own mainnet with custom node implementation for complete control and independence.</p>
+
+        <div class="compliance-grid">
+            <div class="compliance-card">
+                <h3>🇺🇸 United States</h3>
+                <p><strong>Regulators:</strong> SEC, CFTC<br>
+                <strong>Strategy:</strong> Utility token classification<br>
+                <strong>Mitigation:</strong> No investment promises, ecosystem-only positioning</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>SHA-256 Security</h3>
-                <p>Industry-standard cryptographic hashing for block validation, transaction integrity, and wallet generation. Battle-tested security.</p>
+            <div class="compliance-card">
+                <h3>🇪🇺 European Union</h3>
+                <p><strong>Regulation:</strong> MiCA<br>
+                <strong>Classification:</strong> Crypto-asset utility<br>
+                <strong>Status:</strong> Compliance monitoring</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Lightweight PoW</h3>
-                <p>Efficient proof-of-work with adjustable difficulty. Secure without energy waste. Designed for practical validation, not competition.</p>
+            <div class="compliance-card">
+                <h3>🇨🇭 Switzerland</h3>
+                <p><strong>Authority:</strong> FINMA<br>
+                <strong>Structure:</strong> Foundation recommended<br>
+                <strong>Benefit:</strong> Regulatory clarity & reputation</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔐</div>
-                <h3>Nonce Protection</h3>
-                <p>Every transaction includes a strictly increasing nonce. Prevents replay attacks, ensures ordering, and eliminates double-spending.</p>
+            <div class="compliance-card">
+                <h3>🇸🇬 Singapore</h3>
+                <p><strong>Authority:</strong> MAS<br>
+                <strong>Classification:</strong> Digital Payment Token<br>
+                <strong>Framework:</strong> Payment Services Act</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>JSON State Management</h3>
-                <p>Transparent, human-readable state persistence. Balances, blocks, and mempool all stored in accessible JSON format.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔌</div>
-                <h3>RESTful API</h3>
-                <p>Complete API access for wallets, explorers, and integrations. Rate-limited for stability. Documented for developers.</p>
-            </div>
+        </div>
+
+        <div class="risk-matrix">
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>Risk Factor</th>
+                        <th>Mitigation Strategy</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Centralization Risk</td>
+                        <td>Public decentralization roadmap with defined phases</td>
+                        <td>✅ Active</td>
+                    </tr>
+                    <tr>
+                        <td>AML/KYC</td>
+                        <td>Transaction limits, monitoring systems</td>
+                        <td>✅ Implemented</td>
+                    </tr>
+                    <tr>
+                        <td>Custody Risk</td>
+                        <td>Non-custodial wallet architecture</td>
+                        <td>✅ Native</td>
+                    </tr>
+                    <tr>
+                        <td>Securities Law</td>
+                        <td>Utility-only positioning, no equity/ownership rights</td>
+                        <td>✅ Compliant</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Regulation</td>
+                        <td>No fiat on-ramp, ecosystem utility focus</td>
+                        <td>✅ Compliant</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
@@ -1436,8 +1886,8 @@
     <section class="roadmap" id="roadmap">
         <div class="section-header">
             <span class="section-tag">Development</span>
-            <h2>Roadmap</h2>
-            <p>Strategic phases to global adoption</p>
+            <h2>Strategic Roadmap</h2>
+            <p>From centralized infrastructure to federated network</p>
         </div>
         <div class="roadmap-container">
             <div class="roadmap-line"></div>
@@ -1445,45 +1895,36 @@
             <div class="roadmap-item">
                 <div class="roadmap-dot">1</div>
                 <div class="roadmap-content">
-                    <div class="roadmap-phase">Phase 1</div>
-                    <h3>Mainnet Deployment</h3>
-                    <p>Genesis block creation, node infrastructure deployment, and network stabilization for production-ready operation.</p>
+                    <div class="roadmap-phase">Phase 1 (Current)</div>
+                    <h3>Centralized Mainnet</h3>
+                    <p>Genesis block deployed, single node operator, marketplace integration, gaming SDK release, and legal framework establishment.</p>
                 </div>
             </div>
             
             <div class="roadmap-item">
                 <div class="roadmap-dot">2</div>
                 <div class="roadmap-content">
-                    <div class="roadmap-phase">Phase 2</div>
-                    <h3>Explorer Development</h3>
-                    <p>Blockchain explorer launch for transparent viewing of transactions, blocks, addresses, and network statistics.</p>
+                    <div class="roadmap-phase">Phase 2 (6-12 months)</div>
+                    <h3>Federated Validators</h3>
+                    <p>Authorized validator nodes, Proof-of-Authority consensus, partner operator onboarding, and enhanced network redundancy.</p>
                 </div>
             </div>
             
             <div class="roadmap-item">
                 <div class="roadmap-dot">3</div>
                 <div class="roadmap-content">
-                    <div class="roadmap-phase">Phase 3</div>
-                    <h3>Exchange Listings</h3>
-                    <p>Strategic integration with CoinMarketCap, CoinGecko, and cryptocurrency exchanges for global liquidity.</p>
+                    <div class="roadmap-phase">Phase 3 (12-24 months)</div>
+                    <h3>Partial Decentralization</h3>
+                    <p>Public node access, community governance introduction, P2P networking layer (libp2p), and transition to LevelDB storage.</p>
                 </div>
             </div>
             
             <div class="roadmap-item">
                 <div class="roadmap-dot">4</div>
                 <div class="roadmap-content">
-                    <div class="roadmap-phase">Phase 4</div>
-                    <h3>Validator Expansion</h3>
-                    <p>Network decentralization through onboarding of additional node operators and consensus participants.</p>
-                </div>
-            </div>
-            
-            <div class="roadmap-item">
-                <div class="roadmap-dot">5</div>
-                <div class="roadmap-content">
-                    <div class="roadmap-phase">Phase 5</div>
-                    <h3>Ecosystem dApps</h3>
-                    <p>Decentralized application development, strategic partnerships, and real-world utility integration.</p>
+                    <div class="roadmap-phase">Phase 4 (Future)</div>
+                    <h3>DAO Governance</h3>
+                    <p>Decentralized autonomous organization, smart contract layer implementation, and full community-driven governance.</p>
                 </div>
             </div>
         </div>
@@ -1498,20 +1939,20 @@
                 <div class="contact-card">
                     <div class="contact-icon">🌐</div>
                     <h3>Official Website</h3>
-                    <p>Network Information</p>
-                    <div class="website-display">https://velcoin-vlc.onrender.com</div>
+                    <p>Network Information & API</p>
+                    <div class="website-display">velcoin-vlc.onrender.com</div>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">💬</div>
-                    <h3>WhatsApp</h3>
-                    <p>Direct Communication</p>
+                    <h3>Direct Contact</h3>
+                    <p>Founder & Lead Developer</p>
                     <a href="https://wa.me/13156961731" target="_blank">+1 (315) 696-1731</a>
                 </div>
                 <div class="contact-card">
                     <div class="contact-icon">📁</div>
-                    <h3>Source Code</h3>
-                    <p>Node & Wallet Implementation</p>
-                    <p style="margin-top: 15px; color: rgba(255,255,255,0.7);">Available upon request</p>
+                    <h3>Documentation</h3>
+                    <p>Technical Resources</p>
+                    <p style="margin-top: 15px; color: rgba(255,255,255,0.7);">Whitepaper v1.0 | API Docs</p>
                 </div>
             </div>
         </div>
@@ -1520,12 +1961,12 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <img src="velcoin-logo.png" alt="VelCoin" class="footer-logo">
-            <h3>VelCoin</h3>
-            <p><strong>VelCoin (VLC)</strong> Whitepaper Version 1.0</p>
-            <p>VelCoin Mainnet</p>
-            <p>Prepared by Founder, Dainier Velazquez</p>
-            <p class="copyright">&copy; 2026 VelCoin. All rights reserved.</p>
+            <div class="footer-logo">V</div>
+            <h3>VelCoin Network</h3>
+            <p><strong>VelCoin (VLC)</strong> - Digital Commerce Ecosystem Blockchain</p>
+            <p>Layer-1 Protocol | Fixed Supply | Controlled Architecture</p>
+            <p>Founded by Dainier Velazquez | 2026</p>
+            <p class="copyright">&copy; 2026 VelCoin Foundation. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1589,7 +2030,7 @@
         }, observerOptions);
 
         // Observe elements
-        document.querySelectorAll('.wp-section, .feature-card, .supply-feature, .roadmap-item, .contact-card').forEach(el => {
+        document.querySelectorAll('.wp-section, .feature-card, .supply-feature, .roadmap-item, .contact-card, .arch-card, .compliance-card, .tokenomics-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
